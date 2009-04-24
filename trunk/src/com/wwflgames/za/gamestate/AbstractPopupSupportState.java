@@ -68,7 +68,7 @@ public abstract class AbstractPopupSupportState extends BasicGameState {
 	public void doUpdate(GameContainer container, StateBasedGame game, 
 			int delta) throws SlickException {}
 
-	
+	@Override
 	public final void keyPressed(int key, char c) {
 		// if we're showing a popup, pass keyPresses to the popup
 		if ( showPopup ) {
@@ -77,7 +77,29 @@ public abstract class AbstractPopupSupportState extends BasicGameState {
 		}
 		doKeyPressed(key,c);
 	}
+
+	@Override
+	public final void mouseClicked(int button, int x, int y, int clickCount) {
+		// if we're showing a popup, pass mouse clicks to the popup
+		if ( showPopup ) {
+			currentPopup.mouseClicked(button,x,y,clickCount);
+			return;
+		}
+		doMousePressed(button,x,y,clickCount);
+	}
 	
+	
+	/** 
+	 * Empty implementation, in case the implementing class doens't want
+	 * to use mouse events
+	 * @param button
+	 * @param x
+	 * @param y
+	 * @param clickCount
+	 */
+	public void doMousePressed(int button, int x, int y, int clickCount) {
+	}
+
 	public abstract void doKeyPressed(int key, char c);
 	
 	public final void showPopup ( Popup pop ) {

@@ -87,9 +87,9 @@ public class Hero extends Mobile implements MapChangeListener {
 	protected void animationComplete() {
 		super.animationComplete();
 		
-		// tell the regulator our animation is done, and therefore
+		// tell the player our animation is done, and therefore
 		// our turn is done
-		turnRegulator.endPlayerTurn();
+		player.endPlayerTurn();
 	}
 
 	public int getUnequippedDmg() {
@@ -139,7 +139,7 @@ public class Hero extends Mobile implements MapChangeListener {
 				zombie.getRenderX()+12, zombie.getRenderY()+24, 5);
 		
 		// end the player turn
-		turnRegulator.endPlayerTurn();
+		player.endPlayerTurn();
 	}
 
 	@Override

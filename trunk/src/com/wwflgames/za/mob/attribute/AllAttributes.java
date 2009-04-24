@@ -96,8 +96,8 @@ public class AllAttributes {
 	public static final Attribute FLEET_FOOTED = 
 		new Attribute(
 				"Fleet Footed" , 
-				"An extra turn every 10 turns",
-				"1 extra/10 turns",
+				"Speed increased by 1",
+				"+1 speed",
 				null, 
 				Stat.SPEED, 
 				1
@@ -106,8 +106,8 @@ public class AllAttributes {
 	public static final Attribute FLEET_FOOTED2 = 
 		new Attribute(
 				"Fleet Footed 2" , 
-				"An extra turn every 7 turns",
-				"1 extra/10 turns",
+				"Speed increased by 1",
+				"+1 speed",
 				FLEET_FOOTED, 
 				Stat.SPEED, 
 				1
@@ -116,8 +116,8 @@ public class AllAttributes {
 	public static final Attribute FLEET_FOOTED3 = 
 		new Attribute(
 				"Fleet Footed 3" , 
-				"An extra turn every 5 turns",
-				"1 extra/10 turns",
+				"Speed increased by 1",
+				"+1 speed",
 				FLEET_FOOTED2, 
 				Stat.SPEED, 
 				1

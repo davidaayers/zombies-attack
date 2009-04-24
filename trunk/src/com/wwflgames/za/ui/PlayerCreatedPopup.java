@@ -7,6 +7,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.util.Log;
 
 import com.wwflgames.za.game.GameController;
 import com.wwflgames.za.game.Player;
@@ -22,24 +23,39 @@ public class PlayerCreatedPopup extends AbstractPopup {
 	private static final int HEIGHT = 300;
 	private static final int WIDTH = 400;
 	
-	MenuState menuState;
+	private MenuState menuState;
+	
+	private int counter;
+	
 	
 	public PlayerCreatedPopup(MenuState state) {
 		super(state, WIDTH, HEIGHT);
 		menuState = state;
+		counter = 0;
 	}
-
+	
+	@Override
+	public void mouseClicked(int button, int x, int y, int clickCount) {
+		//HACK to fix clicking on screen too early
+		if ( counter > 200 ) {
+			startGame();
+		}
+	}
+	
 	@Override
 	public void keyPressed(int key, char c) {
+		startGame();
+	}
+
+	private void startGame() {
 		state.clearPopup();
 		menuState.startGame();
 	}
-
+	
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
-		// TODO Auto-generated method stub
-		
+		counter+=delta;
 	}
 
 	@Override
@@ -102,5 +118,7 @@ public class PlayerCreatedPopup extends AbstractPopup {
 		y = getBottomY() - 30;
 		centeredText("Press any key to start",g,y);
 	}
+
+
 
 }

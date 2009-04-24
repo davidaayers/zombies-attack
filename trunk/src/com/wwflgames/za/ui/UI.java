@@ -35,6 +35,7 @@ import com.wwflgames.za.map.MapUtils;
 import com.wwflgames.za.map.Path;
 import com.wwflgames.za.map.Wall;
 import com.wwflgames.za.mob.Hero;
+import com.wwflgames.za.mob.Mobile;
 import com.wwflgames.za.mob.Zombie;
 import com.wwflgames.za.mob.ZombieController;
 import com.wwflgames.za.mob.attribute.Stat;
@@ -53,6 +54,7 @@ public class UI extends SlickEntity implements MapChangeListener {
 	private static boolean DEBUG_UI = false;
 	
 	private Hero hero;
+	private Player player;
 	private FloorMap currentMap;
 	private TurnRegulator turnRegulator;
 	private ZombieController zombieController;
@@ -291,9 +293,15 @@ public class UI extends SlickEntity implements MapChangeListener {
 		
 		//TODO add door open animation?
 		if ( control == Control.DOOR_STATE ) {
-			turnRegulator.startPlayerTurn();
+			player.startPlayerTurn();
 			toggleAdjacentDoors();
-			turnRegulator.endPlayerTurn();
+			player.endPlayerTurn();
+		}
+		
+		if ( control == Control.IDLE ) {
+			player.startPlayerTurn();
+			MessageManager.instance().addCenteredMessage("Time passes...");
+			player.endPlayerTurn();
 		}
 		
 		// see if the player is moving
@@ -338,14 +346,14 @@ public class UI extends SlickEntity implements MapChangeListener {
 
 	private void doRangedAttack(Zombie zombie) {
 		disableTargetMode();
-		turnRegulator.startPlayerTurn();
+		player.startPlayerTurn();
 		hero.doRangedAttack(zombie);
 	}
 
 	private void changeDirection() {
-		turnRegulator.startPlayerTurn();
+		player.startPlayerTurn();
 		hero.changeFacing();
-		turnRegulator.endPlayerTurn();
+		player.endPlayerTurn();
 	}
 	
 	private void disableTargetMode() {
@@ -401,6 +409,30 @@ public class UI extends SlickEntity implements MapChangeListener {
 					z.getMobx(), z.getMoby(), currentMap);
 
 			if ( p != null ) {
+				
+				// walk the path and see if there are any zombies in
+				// the way. This prevents targeting zombies that
+				// are behind other zombies
+				boolean foundZombie = false;
+				List<Path.Step> steps = p.getSteps();
+				
+				// skip 1st and last step. 1st step is the player, last
+				// step is the target
+				for ( int idx = 1 ; idx < steps.size() -1 ; idx ++ ) {
+					Path.Step step = steps.get(idx);
+					MapSquare stepMs = currentMap.getMapSquare(step.x, step.y);
+					Mobile m = stepMs.getMobile();
+					if ( m != null ) {
+						foundZombie = true;
+						break;
+					}
+				}
+				
+				// zombie in the path, skip this one
+				if ( foundZombie ) {
+					continue;
+				}
+				
 				Target t = new Target();
 				t.zombie = z;
 				t.path = p;
@@ -474,7 +506,7 @@ public class UI extends SlickEntity implements MapChangeListener {
 		
 		// if there's a zombie there, attack it
 		if ( z != null && canMove ) {
-			turnRegulator.startPlayerTurn();
+			player.startPlayerTurn();
 			hero.attack(z,dx,dy);
 		}
 		// otherwise, see if we can move
@@ -484,8 +516,8 @@ public class UI extends SlickEntity implements MapChangeListener {
 						"Can't move there!");
 				return;
 			}
-			
-			turnRegulator.startPlayerTurn();
+
+			player.startPlayerTurn();
 			hero.moveDelta(dx, dy);
 			
 			MapSquare ms = currentMap.getMapSquare(
@@ -497,11 +529,10 @@ public class UI extends SlickEntity implements MapChangeListener {
 			FloorItem fi = ms.getFloorItem();
 			if ( fi != null ) {
 				ms.setFloorItem(null);
-				hero.addItemToInventory(fi.getItem());
 				MessageManager.instance().addCenteredMessage(
 						"Picked up a " + fi.getItem().toString() );
+				hero.addItemToInventory(fi.getItem());
 			}
-			
 		}		
 	}
 	
@@ -526,6 +557,14 @@ public class UI extends SlickEntity implements MapChangeListener {
 
 	public void setZombieController(ZombieController zombieController) {
 		this.zombieController = zombieController;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 	
 }

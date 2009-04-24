@@ -31,8 +31,7 @@ public class NumKeyPadControlScheme extends ControlScheme {
 		
 		controlKeyMap.put(Input.KEY_O,       Control.DOOR_STATE);
 		controlKeyMap.put(Input.KEY_F,       Control.ACTIVATE_TARGET_MODE);
-		controlKeyMap.put(Input.KEY_N,       Control.NEXT_TARGET);
-		controlKeyMap.put(Input.KEY_SPACE,   Control.FIRE);
+		controlKeyMap.put(Input.KEY_SPACE,   Control.IDLE);
 		controlKeyMap.put(Input.KEY_Q,       Control.TARGET_1);
 		controlKeyMap.put(Input.KEY_W,       Control.TARGET_2);
 		controlKeyMap.put(Input.KEY_E,       Control.TARGET_3);
