@@ -28,6 +28,7 @@ import com.wwflgames.za.map.MapRenderer;
 import com.wwflgames.za.map.MapSquare;
 import com.wwflgames.za.mob.Hero;
 import com.wwflgames.za.mob.ZombieController;
+import com.wwflgames.za.mob.attribute.AllAttributes;
 import com.wwflgames.za.mob.attribute.Attribute;
 import com.wwflgames.za.mob.attribute.AttributeFactory;
 import com.wwflgames.za.ui.UI;
@@ -145,7 +146,11 @@ public class GameController {
 		
 		// create a new player 
 		player = createPlayerForDifficulty();
+		player.setTurnRegulator(turnRegulator);
+		player.addAttribute(AllAttributes.FLEET_FOOTED);
+		addMapChangeListener(player);
 		hero.setPlayer(player);
+		ui.setPlayer(player);
 
 		//startLevel();
 	}

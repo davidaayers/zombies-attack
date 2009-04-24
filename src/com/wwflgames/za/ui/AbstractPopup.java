@@ -38,8 +38,17 @@ public abstract class AbstractPopup implements Popup {
 		popupHeight = pHeight;
 		bgColor = pBgColor;
 	}
+
+	// empty implemention, in case the popup doesn't want to deal with
+	// mouse events
+	public void mouseClicked(int button, int x, int y, int clickCount) {
+	}
 	
-	public abstract void keyPressed(int key, char c);
+	// empty implementation, in case the popup doesn't want to deal with
+	// key presses
+	public void keyPressed(int key, char c) {
+	}
+	
 	public abstract void update(GameContainer container, StateBasedGame game, 
 			int delta) throws SlickException;
 	

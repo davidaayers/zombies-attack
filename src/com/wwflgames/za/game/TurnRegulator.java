@@ -23,25 +23,11 @@ public class TurnRegulator {
 		zombieTurnInProgress = false;
 	}
 	
-	/**
-	 * @deprecated
-	 */
-	public void startPlayerTurn() {
-		startPlayerTurn(true);
-	}
-	
 	public void startPlayerTurn(boolean incrementTurnCounter) {
 		playerTurnInProgress = true;
 		if ( incrementTurnCounter ) {
 			turn++;
 		}
-	}
-
-	/**
-	 * @deprecated
-	 */
-	public void endPlayerTurn() {
-		endPlayerTurn(false);
 	}
 
 	public void endPlayerTurn(boolean getAnother) {
@@ -53,14 +39,14 @@ public class TurnRegulator {
 		}
 		
 		Log.debug("Player turn ended, getAnother = " + getAnother);
-		if ( getAnother ) {
-			startPlayerTurn(false);
-		} else {
-			playerTurnInProgress = false;
+		playerTurnInProgress = false;
+
+		if ( !getAnother ) {
 			// player's turn has ended, including animations, now
 			// let the zombies have a go
 			startZombieTurn();
 		}
+
 	}
 	
 	public void startZombieTurn() {

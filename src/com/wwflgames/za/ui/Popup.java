@@ -11,5 +11,6 @@ public interface Popup {
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException;
 	public void keyPressed(int key, char c);
 	public void aboutToShow();
+	public void mouseClicked(int button, int x, int y, int clickCount);
 	
 }

@@ -165,6 +165,11 @@ public class LevelCompletePopup extends AbstractPopup {
 		selectableList.setList(items);
 		
 	}
+
+	public void mouseClicked(int button, int x, int y, int clickCount) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

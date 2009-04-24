@@ -110,9 +110,9 @@ public class MenuState extends AbstractPopupSupportState {
 	private void initNewGame(int floors) {
 		
 		// turn off all of the mouse over areas
-//		for ( MouseOverArea area : areas ) {
-//			area.setAcceptingInput(false);
-//		}
+		for ( MouseOverArea area : areas ) {
+			area.setAcceptingInput(false);
+		}
 		
 		GameController.instance().initNewGame(floors);
 		showPopup(new PlayerCreatedPopup(this));

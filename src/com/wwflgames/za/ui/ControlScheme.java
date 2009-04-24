@@ -20,8 +20,6 @@ public abstract class ControlScheme {
 		WAIT,
 		DOOR_STATE,
 		ACTIVATE_TARGET_MODE,
-		NEXT_TARGET,
-		FIRE,
 		TARGET_1,
 		TARGET_2,
 		TARGET_3,
@@ -39,7 +37,8 @@ public abstract class ControlScheme {
 		WEAPON_5,
 		WEAPON_6,
 		WEAPON_7,
-		USE_BANDAGE
+		USE_BANDAGE,
+		IDLE
 	}
 	
 	public static final Control[] TARGETING_CONTROLS = {
