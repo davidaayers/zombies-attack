@@ -8,6 +8,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.util.Log;
 
+import com.wwflgames.za.game.GameController;
 import com.wwflgames.za.game.TurnRegulator;
 import com.wwflgames.za.map.FloorMap;
 import com.wwflgames.za.map.MapChangeListener;
@@ -51,9 +52,8 @@ public class ZombieController extends SlickEntity
 	}
 	
 	public void addZombieAt(int x , int y ) throws SlickException {
-		Zombie z = new Zombie(container, game, x, y , this , currentMap , 
-				turnRegulator , hero );
-		z.init(container,game);
+		Zombie z = GameController.instance().getZombieFactory().createZombie();
+		z.moveTo(x, y);
 		zombiesToAdd.add(z);
 	}
 	

@@ -9,6 +9,9 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.util.Log;
 
+import com.wwflgames.za.game.GameController;
+import com.wwflgames.za.map.MapRenderer;
+
 public class MessageManager {
 
 	ArrayList<Message> messages = new ArrayList<Message>();
@@ -36,11 +39,11 @@ public class MessageManager {
 		return Z_INDEX;
 	}
 	
-	public void addFloatingMessage( String message , int x , int y ) {
+	public void addFloatingMessage( String message , float x , float y ) {
 		messages.add(new FloatingMessage(message,x,y));
 	}
 
-	public void addFloatingMessage( String message , int x , int y , Color c ) {
+	public void addFloatingMessage( String message , float x , float y , Color c ) {
 		messages.add(new FloatingMessage(message,x,y,c));
 	}
 
@@ -130,10 +133,22 @@ public class MessageManager {
 		}
 		
 		public void render(Graphics g) {
+			//TODO: need to translate here, probably
+			// target mode needs to be translated, just
+			// like the map.
+			int heromapx = GameController.instance().getHero().getMobx();
+			float translateX = (heromapx/20) * MapRenderer.TILE_WIDTH * 20 * -1;
+			// translate
+			g.translate(translateX, 0);
+			
 			g.setColor(new Color(c.r,c.g,c.b,a));
 			g.resetFont();
 			float newx = x - (g.getFont().getWidth(message) / 2);
 			g.drawString(message, (int) newx, (int) y);
+			
+			// untranslate
+			g.translate(0,0);
+			g.resetTransform();
 		}
 	}
 }

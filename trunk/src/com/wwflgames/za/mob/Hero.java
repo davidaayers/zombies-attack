@@ -6,6 +6,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import com.wwflgames.za.game.GameCommand;
+import com.wwflgames.za.game.GameController;
 import com.wwflgames.za.game.Player;
 import com.wwflgames.za.game.TurnRegulator;
 import com.wwflgames.za.item.Ammo;
@@ -79,8 +81,7 @@ public class Hero extends Mobile implements MapChangeListener {
 	
 	@Override
 	public void doDeath() {
-		//TODO end the game!
-		
+		GameController.instance().fireGameCommand(GameCommand.PLAYER_DIED);
 	}
 	
 	@Override

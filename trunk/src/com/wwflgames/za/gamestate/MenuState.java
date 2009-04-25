@@ -110,16 +110,24 @@ public class MenuState extends AbstractPopupSupportState {
 	private void initNewGame(int floors) {
 		
 		// turn off all of the mouse over areas
-		for ( MouseOverArea area : areas ) {
-			area.setAcceptingInput(false);
-		}
+		acceptingInputForMenu(false);
 		
 		GameController.instance().initNewGame(floors);
 		showPopup(new PlayerCreatedPopup(this));
 	}
 	
 	public void startGame() {
+		// reset our state
+		acceptingInputForMenu(true);
+		
 		GameController.instance().startLevel();
+	}
+	
+	private void acceptingInputForMenu(boolean flag) {
+		// turn off all of the mouse over areas
+		for ( MouseOverArea area : areas ) {
+			area.setAcceptingInput(flag);
+		}
 	}
 	
 	public void doRender(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {

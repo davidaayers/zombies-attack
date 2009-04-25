@@ -28,6 +28,7 @@ import com.wwflgames.za.map.MapRenderer;
 import com.wwflgames.za.map.MapSquare;
 import com.wwflgames.za.mob.Hero;
 import com.wwflgames.za.mob.ZombieController;
+import com.wwflgames.za.mob.ZombieFactory;
 import com.wwflgames.za.mob.attribute.AllAttributes;
 import com.wwflgames.za.mob.attribute.Attribute;
 import com.wwflgames.za.mob.attribute.AttributeFactory;
@@ -66,6 +67,8 @@ public class GameController {
 	private int maxFloors;
 
 	private Player player;
+
+	private ZombieFactory zombieFactory;
 	
 	// singleton
 	private GameController() {}
@@ -99,7 +102,9 @@ public class GameController {
 		mapRenderer.init(container,game);
 		
 		mapController = new MapController();
-
+		
+		zombieFactory = new ZombieFactory();
+		zombieFactory.init(container,game);
 		
 	}
 
@@ -147,7 +152,6 @@ public class GameController {
 		// create a new player 
 		player = createPlayerForDifficulty();
 		player.setTurnRegulator(turnRegulator);
-		player.addAttribute(AllAttributes.FLEET_FOOTED);
 		addMapChangeListener(player);
 		hero.setPlayer(player);
 		ui.setPlayer(player);
@@ -298,6 +302,13 @@ public class GameController {
 	public FloorMap getCurrentMap() {
 		return currentMap;
 	}
-	
+
+	public TurnRegulator getTurnRegulator() {
+		return turnRegulator;
+	}
+
+	public ZombieFactory getZombieFactory() {
+		return zombieFactory;
+	}
 
 }

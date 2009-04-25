@@ -21,7 +21,7 @@ import com.wwflgames.za.ui.HealthBar;
 import com.wwflgames.za.util.Dice;
 import com.wwflgames.za.util.GShuffleBag;
 
-public class Zombie extends Mobile {
+public abstract class Zombie extends Mobile {
 
 	HealthBar healthBar;
 	private ZombieController controller;
@@ -46,27 +46,20 @@ public class Zombie extends Mobile {
 		dirCheck.put(Dir.WEST, westCheck);
 	}
 
-	public Zombie(GameContainer container, StateBasedGame game, int startx,
-			int starty, ZombieController controller, FloorMap currentMap,
-			TurnRegulator turnRegulator, Hero hero) {
-		this.mobx = startx;
-		this.moby = starty;
+	public Zombie(GameContainer container, StateBasedGame game, 
+			ZombieController controller, FloorMap currentMap,
+			TurnRegulator turnRegulator, Hero hero, MobSpriteSheet spriteSheet,
+			int maxHealth) {
 		this.controller = controller;
 		this.currentMap = currentMap;
 		this.turnRegulator = turnRegulator;
 		this.hero = hero;
 		this.facing = currentMap.getDirection();
-
-		maxHp = 3;
-		currentHp = 3;
-	}
-
-	@Override
-	public void init(GameContainer container, StateBasedGame game) 
-		throws SlickException {
-		// TODO make lots of zombies with different graphics
-		// and different behavior
-		mobSpriteSheet = new MobSpriteSheet("red-haired-zombie.png");
+		this.mobSpriteSheet = spriteSheet;
+		
+		this.maxHp = maxHealth;
+		this.currentHp = maxHealth;
+		
 		mobSpriteSheet.standStill();
 		
 		if ( Dice.randomInt(100) > 50 ) {
@@ -78,10 +71,8 @@ public class Zombie extends Mobile {
 		healthBar = new HealthBar(getRenderX(), getRenderY(), 16, 6,
 				Color.black, Color.green, 4, 0);
 		healthBar.setPctComplete((double) currentHp / (double) maxHp);
-
-		moveTo(mobx, moby);
 	}
-
+	
 	public void takeTurn(int turn) {
 
 		// assume we can't see player
@@ -188,30 +179,7 @@ public class Zombie extends Mobile {
 				// end the turn
 				controller.zombieDoneWithTurn(this);
 			}
-
-
-			
-//			//TODO: make movement smarter so zombies move better
-//			Dir moveDir = check[Dice.d(0,check.length)];
-//
-//			// TODO clean up this mess, too many if and else
-//			int checkx = mobx + moveDir.getMapDelta().x;
-//			int checky = moby + moveDir.getMapDelta().y;
-//			if (currentMap.inBounds(checkx, checky)) {
-//				MapSquare ms = currentMap.getMapSquare(checkx, checky);
-//				Mobile checkMob = ms.getMobile();
-//				// if there's already another zombie there, then just
-//				// don't move. Zombies are easily confused.
-//				if (checkMob == null) {
-//					moveDelta(moveDir.getMapDelta().x, moveDir.getMapDelta().y);
-//				} else {
-//					controller.zombieDoneWithTurn(this);
-//				}
-//			} else {
-//				controller.zombieDoneWithTurn(this);
-//			}
 		}
-
 	}
 
 	@Override
