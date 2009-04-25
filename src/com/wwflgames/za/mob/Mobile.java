@@ -72,6 +72,8 @@ public abstract class Mobile extends SlickEntity {
 			rendery = getRenderY();
 		} else {
 			if ( currentAnimation != null ) {
+				// update the sheet, so the zombie walks
+				mobSpriteSheet.update(delta);
 				if ( currentAnimation.shouldGetNextPoint(delta) ) {
 					AnimationPathPoint app = 
 						currentAnimation.getNextPathPoint();
@@ -197,7 +199,9 @@ public abstract class Mobile extends SlickEntity {
 	
 	public void moveTo(int checkmobx, int checkmoby) {
 		MapSquare oldms = currentMap.getMapSquare(mobx, moby);
-		oldms.setMobile(null);
+		if ( oldms != null ) {
+			oldms.setMobile(null);
+		}
 		mobx=checkmobx;
 		moby=checkmoby;
 		MapSquare newms = currentMap.getMapSquare(mobx, moby);
@@ -266,11 +270,17 @@ public abstract class Mobile extends SlickEntity {
 	
 	protected void playAnimation(AnimationState animationState, 
 			Animation animation) {
+		
+//		if ( animationState == AnimationState.MOVE ) {
+//			mobSpriteSheet.startWalking();
+//		}
+		
 		currentAnimation = animation;
 		currentAnimationState = animationState;
 	}
 	
 	protected void animationComplete() {
+//		mobSpriteSheet.standStill();
 		currentAnimation = null;
 		currentAnimationState = AnimationState.NONE;
 	}

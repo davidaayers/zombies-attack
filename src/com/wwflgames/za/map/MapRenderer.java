@@ -108,8 +108,6 @@ public class MapRenderer extends SlickEntity implements MapChangeListener {
 				if (heroRoom != null && heroRoom.getMapSquares().contains(ms)) {
 					wallColor = TRANS_WALL_COLOR;
 					roomStuffVisible = true;
-					g.setColor(Color.white);
-					g.drawString("hero is in the room", 0, 100);
 				}
 				
 				// find the current room
@@ -134,9 +132,6 @@ public class MapRenderer extends SlickEntity implements MapChangeListener {
 						roomStuffVisible = true;
 					}
 				}
-				
-				g.setColor(Color.white);
-				g.drawString("roomStuffVisible = " + roomStuffVisible , 0, 140);
 				
 				// x1 and x1 will be used as the base for all drawing, they
 				// are the top left corner of the floor tile

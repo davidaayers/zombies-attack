@@ -21,7 +21,15 @@ public class MobSpriteSheet {
 	
 	public MobSpriteSheet(String ref) throws SlickException {
 		Image i = new Image(ref,TRANSPARENCY_COLOR);
-		spriteSheet = new SpriteSheet(i,24,32);
+		prepare(i);
+	}
+	
+	public MobSpriteSheet(Image spriteImage) {
+		prepare(spriteImage);
+	}
+	
+	private void prepare(Image spriteImage) {
+		spriteSheet = new SpriteSheet(spriteImage,24,32);
 		
 		// set up the four animations, one for each direction
 		animations = new Animation[4];

@@ -9,6 +9,8 @@ import com.wwflgames.za.game.GameCommand;
 import com.wwflgames.za.game.GameCommandListener;
 import com.wwflgames.za.game.GameController;
 import com.wwflgames.za.ui.LevelCompletePopup;
+import com.wwflgames.za.ui.PlayerDiedPopup;
+import com.wwflgames.za.ui.Popup;
 
 
 public class GamePlayState extends AbstractPopupSupportState 
@@ -19,6 +21,8 @@ public class GamePlayState extends AbstractPopupSupportState
 	private GameContainer container = null;
 	private StateBasedGame game = null;
 	private LevelCompletePopup levelCompletePopup;
+
+	private Popup playerDiedPopup;
 	
 	@Override
 	public int getID() {
@@ -33,6 +37,9 @@ public class GamePlayState extends AbstractPopupSupportState
 		
 		// create the level complete popup
 		levelCompletePopup = new LevelCompletePopup(this);
+		
+		// create the player died popup
+		playerDiedPopup = new PlayerDiedPopup(this);
 
 		// add ourselves as a command listener
 		GameController.instance().addGameCommandListener(this);
@@ -71,6 +78,9 @@ public class GamePlayState extends AbstractPopupSupportState
 	public void performCommand(GameCommand command) {
 		if ( GameCommand.SHOW_LEVEL_COMPLETE_POPUP == command ) {
 			showPopup(levelCompletePopup);
+		} 
+		else if ( GameCommand.PLAYER_DIED == command ) {
+			showPopup(playerDiedPopup);
 		}
 	}
 }
