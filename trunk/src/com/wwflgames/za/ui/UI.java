@@ -18,7 +18,9 @@ import org.newdawn.slick.util.Log;
 import com.wwflgames.za.game.GameCommand;
 import com.wwflgames.za.game.GameController;
 import com.wwflgames.za.game.Player;
+import com.wwflgames.za.game.TallyTracker;
 import com.wwflgames.za.game.TurnRegulator;
+import com.wwflgames.za.game.TallyTracker.Tally;
 import com.wwflgames.za.item.Ammo;
 import com.wwflgames.za.item.Bandage;
 import com.wwflgames.za.item.RangedWeapon;
@@ -340,6 +342,7 @@ public class UI extends SlickEntity implements MapChangeListener {
 			int newHp = hero.getCurrentHp() + healed;
 			hero.setCurrentHp(newHp<maxHp?newHp:maxHp);
 			MessageManager.instance().addCenteredMessage("Healed " + healed );
+			TallyTracker.instance().addTally(Tally.BANDAGES_USED, 1);
 		}
 		
 	}

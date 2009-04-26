@@ -1,5 +1,8 @@
 package com.wwflgames.za.item;
 
+import com.wwflgames.za.game.TallyTracker;
+import com.wwflgames.za.game.TallyTracker.Tally;
+
 public class Ammo extends StackableItem {
 
 	Weapon ammoFor;
@@ -21,6 +24,7 @@ public class Ammo extends StackableItem {
 	
 	public void useAmmo() {
 		quantity --;
+		TallyTracker.instance().addTally(Tally.AMMO_USED, 1);
 	}
 	
 	@Override
