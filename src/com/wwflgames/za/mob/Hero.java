@@ -9,7 +9,9 @@ import org.newdawn.slick.state.StateBasedGame;
 import com.wwflgames.za.game.GameCommand;
 import com.wwflgames.za.game.GameController;
 import com.wwflgames.za.game.Player;
+import com.wwflgames.za.game.TallyTracker;
 import com.wwflgames.za.game.TurnRegulator;
+import com.wwflgames.za.game.TallyTracker.Tally;
 import com.wwflgames.za.item.Ammo;
 import com.wwflgames.za.item.Item;
 import com.wwflgames.za.item.RangedWeapon;
@@ -166,6 +168,12 @@ public class Hero extends Mobile implements MapChangeListener {
 	public void setPlayer(Player player) {
 		this.player = player;
 		this.currentHp = player.getStatValue(Stat.MAX_HEALTH);
+	}
+	
+	@Override
+	public void doDamage(int damage) {
+		super.doDamage(damage);
+		TallyTracker.instance().addTally(Tally.HEALTH_LOST, damage);
 	}
 		
 }

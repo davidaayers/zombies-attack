@@ -82,12 +82,16 @@ public class LevelCompletePopup extends AbstractPopup {
 		y+= 20;
 		leftAlignedText("Zombies Killed: " + 
 				tt.getCurrentLevelTally(Tally.ZOMBIES_KILLED), g, y );
-		g.drawString("Ammo used:", centerX, y );
+		g.drawString("Ammo used:" +
+				tt.getCurrentLevelTally(Tally.AMMO_USED), centerX, y );
 		y+= 20;
-		leftAlignedText("Health Lost: ", g , y );
-		g.drawString("Bandages Used: " , centerX , y );
+		leftAlignedText("Health Lost: " +
+				tt.getCurrentLevelTally(Tally.HEALTH_LOST), g , y );
+		g.drawString("Bandages Used: " +
+				tt.getCurrentLevelTally(Tally.BANDAGES_USED), centerX , y );
 		y+= 20;
-		leftAlignedText("Turns Taken: ", g , y );
+		leftAlignedText("Turns Taken: " +
+				tt.getCurrentLevelTally(Tally.TURNS_TAKEN), g , y );
 		g.drawString("Something something: " , centerX , y );
 		
 		y+= 30;

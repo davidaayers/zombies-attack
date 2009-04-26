@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.newdawn.slick.util.Log;
 
+import com.wwflgames.za.game.TallyTracker.Tally;
 import com.wwflgames.za.mob.ZombieController;
 
 //TODO add some kind of indicator on the screen that
@@ -27,6 +28,7 @@ public class TurnRegulator {
 		playerTurnInProgress = true;
 		if ( incrementTurnCounter ) {
 			turn++;
+			TallyTracker.instance().addTally(Tally.TURNS_TAKEN, 1);
 		}
 	}
 
