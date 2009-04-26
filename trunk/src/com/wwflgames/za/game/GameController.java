@@ -148,6 +148,8 @@ public class GameController {
 		addMapChangeListener(mapController);
 		
 		currentFloor = 1;
+
+		addMapChangeListener(TallyTracker.instance());
 		
 		// create a new player 
 		player = createPlayerForDifficulty();
