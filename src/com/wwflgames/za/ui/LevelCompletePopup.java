@@ -10,6 +10,8 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.util.Log;
 
 import com.wwflgames.za.game.GameController;
+import com.wwflgames.za.game.TallyTracker;
+import com.wwflgames.za.game.TallyTracker.Tally;
 import com.wwflgames.za.gamestate.AbstractPopupSupportState;
 import com.wwflgames.za.mob.Hero;
 import com.wwflgames.za.mob.attribute.Attribute;
@@ -74,9 +76,12 @@ public class LevelCompletePopup extends AbstractPopup {
 		g.setColor(Color.blue);
 		centeredText("YOU MADE IT TO THE STAIRS!", g, y);
 		
+		TallyTracker tt = TallyTracker.instance();
+		
 		g.setColor(Color.darkGray);
 		y+= 20;
-		leftAlignedText("Zombies Killed: ", g, y );
+		leftAlignedText("Zombies Killed: " + 
+				tt.getCurrentLevelTally(Tally.ZOMBIES_KILLED), g, y );
 		g.drawString("Ammo used:", centerX, y );
 		y+= 20;
 		leftAlignedText("Health Lost: ", g , y );

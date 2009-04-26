@@ -10,7 +10,9 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.util.Log;
 
+import com.wwflgames.za.game.TallyTracker;
 import com.wwflgames.za.game.TurnRegulator;
+import com.wwflgames.za.game.TallyTracker.Tally;
 import com.wwflgames.za.map.Dir;
 import com.wwflgames.za.map.FloorMap;
 import com.wwflgames.za.map.MapSquare;
@@ -217,6 +219,7 @@ public abstract class Zombie extends Mobile {
 	}
 
 	public void doDeath() {
+		TallyTracker.instance().addTally(Tally.ZOMBIES_KILLED, 1);
 		// add a big splash of blood on death
 		currentMap.addBlood(mobx, moby, renderx + 12, rendery + 24, 10);
 		System.out

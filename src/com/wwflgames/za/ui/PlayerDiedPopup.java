@@ -1,0 +1,46 @@
+package com.wwflgames.za.ui;
+
+import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
+
+import com.wwflgames.za.game.GameController;
+import com.wwflgames.za.gamestate.AbstractPopupSupportState;
+
+public class PlayerDiedPopup extends AbstractPopup {
+
+	public PlayerDiedPopup(AbstractPopupSupportState state) {
+		super(state, 600, 400);
+	}
+
+	@Override
+	public void doRender(GameContainer container, StateBasedGame game,
+			Graphics g) throws SlickException {
+
+		// render the stats section first
+		float y = getTopY() + 5;
+		float centerX = getCenterX();
+		
+		g.setColor(Color.red);
+		centeredText("YOU DIED!", g, y);
+		y+=20;
+		centeredText("GAME OVER", g, y);
+		y+=40;
+		centeredText("Press any key to return to main menu.", g , y );
+		
+	}
+
+	@Override
+	public void update(GameContainer container, StateBasedGame game, int delta)
+			throws SlickException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyPressed(int key, char c) {
+		GameController.instance().showGameMenu();
+	}
+}
