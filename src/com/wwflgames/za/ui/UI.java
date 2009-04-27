@@ -125,6 +125,8 @@ public class UI extends SlickEntity implements MapChangeListener {
 	@Override
 	public void render(Graphics g) throws SlickException {
 		
+		g.setFont(GameController.GAME_FONT);
+		
 		// draw the Player's health bar
 		healthBar.render(g);
 		g.setColor(Color.black);

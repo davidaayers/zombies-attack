@@ -50,6 +50,7 @@ public class GamePlayState extends AbstractPopupSupportState
 	@Override
 	public void doRender(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {
+		g.setFont(GameController.GAME_FONT);
 
 		// render the map, which also renders everyone on the map
 		GameController.instance().getMapRenderer().renderFloor(g);

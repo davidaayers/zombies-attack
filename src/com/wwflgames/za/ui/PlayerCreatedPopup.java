@@ -61,6 +61,10 @@ public class PlayerCreatedPopup extends AbstractPopup {
 	@Override
 	public void doRender(GameContainer container, StateBasedGame game,
 			Graphics g) throws SlickException {
+
+		g.setFont(GameController.GAME_FONT);
+
+		
 		// grab the player
 		Player player = GameController.instance().getPlayer();
 		int maxFloors = GameController.instance().getMaxFloors();

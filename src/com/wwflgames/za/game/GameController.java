@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.newdawn.slick.AngelCodeFont;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
@@ -44,6 +46,8 @@ import com.wwflgames.za.util.Dice;
  */
 public class GameController {
 
+	public static AngelCodeFont GAME_FONT;
+	
 	private static GameController instance;
 	
 	private GameContainer container;
@@ -69,7 +73,7 @@ public class GameController {
 	private Player player;
 
 	private ZombieFactory zombieFactory;
-	
+
 	// singleton
 	private GameController() {}
 	
@@ -106,6 +110,9 @@ public class GameController {
 		zombieFactory = new ZombieFactory();
 		zombieFactory.init(container,game);
 		
+		GAME_FONT = new AngelCodeFont(
+				"verdana.fnt",
+				"verdana.png");
 	}
 
 	public void showGameMenu() {

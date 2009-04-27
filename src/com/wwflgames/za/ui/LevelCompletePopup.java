@@ -31,7 +31,7 @@ public class LevelCompletePopup extends AbstractPopup {
 		float y = state.getContainer().getHeight()/2 - popupHeight/2;
 
 		// create a selectable list
-		selectableList = new SelectableList(4, x, y+165, 240, Color.green, 
+		selectableList = new SelectableList(4, x, y+180, 240, Color.green, 
 				Color.blue, Color.gray,  new ItemSelectedListener() {
 			public void itemSelected(Object o) {
 				Log.debug("Attribute " + o + " selected");
@@ -63,6 +63,8 @@ public class LevelCompletePopup extends AbstractPopup {
 	public void doRender(GameContainer container, StateBasedGame game,
 			Graphics g) throws SlickException {
 
+		g.setFont(GameController.GAME_FONT);
+
 		// The screen is divided into three sections.  The top shows a recap
 		// of the mayhem on the current level (zombies kills, turns elapsed,
 		// damage taken, etc). Below that are two different lists, a list of
@@ -75,25 +77,10 @@ public class LevelCompletePopup extends AbstractPopup {
 		
 		g.setColor(Color.blue);
 		centeredText("YOU MADE IT TO THE STAIRS!", g, y);
-		
-		TallyTracker tt = TallyTracker.instance();
-		
-		g.setColor(Color.darkGray);
 		y+= 20;
-		leftAlignedText("Zombies Killed: " + 
-				tt.getCurrentLevelTally(Tally.ZOMBIES_KILLED), g, y );
-		g.drawString("Ammo used:" +
-				tt.getCurrentLevelTally(Tally.AMMO_USED), centerX, y );
-		y+= 20;
-		leftAlignedText("Health Lost: " +
-				tt.getCurrentLevelTally(Tally.HEALTH_LOST), g , y );
-		g.drawString("Bandages Used: " +
-				tt.getCurrentLevelTally(Tally.BANDAGES_USED), centerX , y );
-		y+= 20;
-		leftAlignedText("Turns Taken: " +
-				tt.getCurrentLevelTally(Tally.TURNS_TAKEN), g , y );
-		g.drawString("Something something: " , centerX , y );
-		
+
+		float x1 = getLeftX() + 5;
+		y = TallyRenderer.render(g, y, x1, centerX);
 		y+= 30;
 		
 		// draw a line to separate this section from the previous
@@ -120,6 +107,9 @@ public class LevelCompletePopup extends AbstractPopup {
 			g.drawString("No more attributes available", centerX, y);
 			y+= 40;
 		}
+		
+		y+=10;
+		
 		// list the current attributes from the hero
 		List<Attribute> attributes = 
 			GameController.instance().getPlayer().getAttributes();
