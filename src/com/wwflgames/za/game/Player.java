@@ -13,6 +13,7 @@ import com.wwflgames.za.item.StackableItem;
 import com.wwflgames.za.item.Weapon;
 import com.wwflgames.za.map.FloorMap;
 import com.wwflgames.za.map.MapChangeListener;
+import com.wwflgames.za.mob.Hero;
 import com.wwflgames.za.mob.attribute.Attribute;
 import com.wwflgames.za.mob.attribute.Stat;
 import com.wwflgames.za.ui.MessageManager;
@@ -33,6 +34,8 @@ public class Player implements MapChangeListener {
 	private int unequippedDmg = 1;
 	private TurnRegulator turnRegulator;
 	private int speedCounter;
+	private int regenCounter;
+	private Hero hero;
 	
 	private Map<Stat,Integer> statValues = new HashMap<Stat,Integer>();
 	
@@ -136,6 +139,7 @@ public class Player implements MapChangeListener {
 	public void startPlayerTurn() {
 		// increment speed counter.
 		speedCounter++;
+		regenCounter++;
 		turnRegulator.startPlayerTurn(true);
 	}
 	
@@ -164,6 +168,29 @@ public class Player implements MapChangeListener {
 		}
 		
 		turnRegulator.endPlayerTurn(extraTurn);
+		
+		// check regen counter to see if we get
+		// to regen health this turn
+		// based on regen attribute
+		// 0 regen = no regen
+		// 1 regen = 1 health every 12 rounds
+		// 2 regen = 1 health every 8 rounds
+		// 3 regen = 1 health every 4 rounds
+		int regen = getStatValue(Stat.HEALTH_REGEN);
+		int[] regenCheckArr = new int[] { 20 , 10 , 5 };
+		if ( regen > 0 ) {
+			int regenCheck = regenCheckArr[regen-1];
+			if ( regenCounter >= regenCheck ) {
+				regenCounter = 0;
+				
+				if ( hero.getMaxHp() != hero.getCurrentHp() ) {
+					hero.setCurrentHp(hero.getCurrentHp()+1);
+					MessageManager.instance().addCenteredMessage("+1 Health Regen");
+				}
+			}
+		}
+		
+		
 	}
 
 	public void resetSpeedCounter() {
@@ -181,6 +208,16 @@ public class Player implements MapChangeListener {
 	public void mapChanged(FloorMap newMap) {
 		resetSpeedCounter();
 	}
+
+	public Hero getHero() {
+		return hero;
+	}
+
+	public void setHero(Hero hero) {
+		this.hero = hero;
+	}
+
+
 	
 	
 }

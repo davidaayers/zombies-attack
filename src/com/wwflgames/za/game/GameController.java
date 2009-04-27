@@ -166,6 +166,7 @@ public class GameController {
 		player.setTurnRegulator(turnRegulator);
 		addMapChangeListener(player);
 		hero.setPlayer(player);
+		player.setHero(hero);
 		ui.setPlayer(player);
 
 		//startLevel();
