@@ -34,6 +34,7 @@ import com.wwflgames.za.mob.ZombieFactory;
 import com.wwflgames.za.mob.attribute.AllAttributes;
 import com.wwflgames.za.mob.attribute.Attribute;
 import com.wwflgames.za.mob.attribute.AttributeFactory;
+import com.wwflgames.za.ui.MessageManager;
 import com.wwflgames.za.ui.UI;
 import com.wwflgames.za.util.Dice;
 
@@ -123,6 +124,8 @@ public class GameController {
 	
 	public void initNewGame(int difficulty) {
 	
+		MessageManager.instance().clearAll();
+		
 		currentFloor = 1;
 		maxFloors = difficulty;
 

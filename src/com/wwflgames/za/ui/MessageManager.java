@@ -133,9 +133,6 @@ public class MessageManager {
 		}
 		
 		public void render(Graphics g) {
-			//TODO: need to translate here, probably
-			// target mode needs to be translated, just
-			// like the map.
 			int heromapx = GameController.instance().getHero().getMobx();
 			float translateX = (heromapx/20) * MapRenderer.TILE_WIDTH * 20 * -1;
 			// translate
@@ -150,5 +147,9 @@ public class MessageManager {
 			g.translate(0,0);
 			g.resetTransform();
 		}
+	}
+
+	public void clearAll() {
+		messages.clear();
 	}
 }

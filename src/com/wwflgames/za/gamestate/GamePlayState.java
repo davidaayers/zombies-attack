@@ -22,7 +22,7 @@ public class GamePlayState extends AbstractPopupSupportState
 	private StateBasedGame game = null;
 	private LevelCompletePopup levelCompletePopup;
 
-	private Popup playerDiedPopup;
+	private PlayerDiedPopup playerDiedPopup;
 	
 	@Override
 	public int getID() {
@@ -84,4 +84,10 @@ public class GamePlayState extends AbstractPopupSupportState
 			showPopup(playerDiedPopup);
 		}
 	}
+	
+	public void returnToGameMenu() {
+		this.clearPopup();
+		GameController.instance().showGameMenu();
+	}
+	
 }

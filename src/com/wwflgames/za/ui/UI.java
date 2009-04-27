@@ -570,6 +570,8 @@ public class UI extends SlickEntity implements MapChangeListener {
 
 	public void setPlayer(Player player) {
 		this.player = player;
+		// reset the health bar
+		healthBar.setPctComplete(1);
 	}
 	
 }
