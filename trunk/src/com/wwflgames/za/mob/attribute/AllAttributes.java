@@ -133,6 +133,37 @@ public class AllAttributes {
 				5
 		);
 	
+	public static final Attribute WOLVERINE = 
+		new Attribute(
+				"Wolverine" , 
+				"Regen Health",
+				"+1 Health Regen",
+				null, 
+				Stat.HEALTH_REGEN, 
+				1
+		);
+
+	public static final Attribute WOLVERINE2 = 
+		new Attribute(
+				"Wolverine 2" , 
+				"Regen Health",
+				"+1 Health Regen",
+				WOLVERINE, 
+				Stat.HEALTH_REGEN, 
+				1
+		);
+
+	public static final Attribute WOLVERINE3 = 
+		new Attribute(
+				"Wolverine 3" , 
+				"Regen Health",
+				"+1 Health Regen",
+				WOLVERINE2, 
+				Stat.HEALTH_REGEN, 
+				1
+		);
+
+	
 	public static final Attribute[] ALL_ATTRIBUTES = {
 		SLUGGER,
 		SLUGGER2,
@@ -146,7 +177,10 @@ public class AllAttributes {
 		FLEET_FOOTED,
 		FLEET_FOOTED2,
 		FLEET_FOOTED3,
-		HEALTHY_HORSE
+		HEALTHY_HORSE,
+		WOLVERINE,
+		WOLVERINE2,
+		WOLVERINE3
 	};
 	
 }

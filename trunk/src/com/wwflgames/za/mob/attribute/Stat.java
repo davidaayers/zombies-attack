@@ -12,7 +12,8 @@ public enum Stat {
 	RIFLE_HEADSHOT_CHANCE(20),
 	SHOTGUN_SKILL(0),
 	FLAMETHROWER_SKILL(0),
-	SPEED(0);
+	SPEED(0), 
+	HEALTH_REGEN(0);
 	;
 	
 	private int initialValue;
