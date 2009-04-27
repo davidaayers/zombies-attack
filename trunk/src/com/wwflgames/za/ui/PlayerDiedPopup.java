@@ -18,6 +18,7 @@ public class PlayerDiedPopup extends AbstractPopup {
 	@Override
 	public void doRender(GameContainer container, StateBasedGame game,
 			Graphics g) throws SlickException {
+		g.setFont(GameController.GAME_FONT);
 
 		// render the stats section first
 		float y = getTopY() + 5;

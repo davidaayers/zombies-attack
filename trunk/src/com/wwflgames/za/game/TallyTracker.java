@@ -58,11 +58,21 @@ public class TallyTracker implements MapChangeListener {
 	}
 	
 	public int getCurrentLevelTally(Tally tally) {
-		return currentLevelTally.get(tally);
+		Integer value = currentLevelTally.get(tally);
+		if ( value == null ) {
+			return 0; 
+		} else { 
+			return value.intValue();
+		}
 	}
 	
 	public int getOverallTally(Tally tally) {
-		return totalTally.get(tally);
+		Integer value = totalTally.get(tally);
+		if ( value == null ) { 
+			return 0; 
+		} else { 
+			return value.intValue();
+		}
 	}
 	
 	
