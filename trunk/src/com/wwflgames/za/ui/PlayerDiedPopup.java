@@ -8,11 +8,15 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import com.wwflgames.za.game.GameController;
 import com.wwflgames.za.gamestate.AbstractPopupSupportState;
+import com.wwflgames.za.gamestate.GamePlayState;
 
 public class PlayerDiedPopup extends AbstractPopup {
 
-	public PlayerDiedPopup(AbstractPopupSupportState state) {
+	GamePlayState gamePlayState;
+	
+	public PlayerDiedPopup(GamePlayState state) {
 		super(state, 600, 400);
+		gamePlayState = state;
 	}
 
 	@Override
@@ -42,6 +46,6 @@ public class PlayerDiedPopup extends AbstractPopup {
 
 	@Override
 	public void keyPressed(int key, char c) {
-		GameController.instance().showGameMenu();
+		gamePlayState.returnToGameMenu();
 	}
 }
