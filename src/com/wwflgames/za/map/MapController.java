@@ -57,7 +57,7 @@ public class MapController implements TurnListener, MapChangeListener {
 
 		spawners.clear();
 
-		spawnerCountdown = spawnerCountdownByDifficult[newMap.getDifficulty()];
+		spawnerCountdown = spawnerCountdownByDifficult[newMap.getDifficulty()-1];
 
 		Log.debug("spawnerCountdown = " + spawnerCountdown);
 		

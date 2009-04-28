@@ -7,6 +7,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import com.wwflgames.za.game.GameController;
 import com.wwflgames.za.gamestate.GamePlayState;
+import com.wwflgames.za.gamestate.GameWonState;
 import com.wwflgames.za.gamestate.MenuState;
 import com.wwflgames.za.gamestate.TitleState;
 
@@ -47,6 +48,7 @@ public class ZombiesAttack extends StateBasedGame {
 		addState(new TitleState());
 		addState(new MenuState());
 		addState(new GamePlayState());
+		addState(new GameWonState());
 	}
 	
 	public static void main(String[] argv) {

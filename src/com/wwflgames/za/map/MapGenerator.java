@@ -216,7 +216,7 @@ public class MapGenerator {
 		}
 		
 		int[] spawnChanceByDifficulty = new int[] { 10 , 20 , 30, 40 };
-		int spawnChance = spawnChanceByDifficulty[difficulty];
+		int spawnChance = spawnChanceByDifficulty[difficulty-1];
 		
 		//add zombie spawners to the leading edge of the map
 		for ( int y = 0 ; y < HEIGHT ; y ++ ) {

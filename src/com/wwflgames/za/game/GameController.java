@@ -16,6 +16,7 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 import org.newdawn.slick.util.Log;
 
 import com.wwflgames.za.gamestate.GamePlayState;
+import com.wwflgames.za.gamestate.GameWonState;
 import com.wwflgames.za.gamestate.MenuState;
 import com.wwflgames.za.item.Ammo;
 import com.wwflgames.za.item.Bandage;
@@ -193,10 +194,10 @@ public class GameController {
 		startLevel();
 	}
 
-	//TODO: show the screen.  Well, make the screen, then show it
 	private void showGameWonScreen() {
-		Log.debug("You won the game!");
-		System.exit(1);
+		game.enterState(GameWonState.STATE_ID, 
+				new FadeOutTransition(Color.black), 
+				new FadeInTransition(Color.black)); 	
 	}
 
 	public void startLevel() {
