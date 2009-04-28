@@ -402,10 +402,15 @@ public class UI extends SlickEntity implements MapChangeListener {
 		Log.debug("before bounds " + rx1+","+ry1+" "+rx2+","+ry2);
 		
 		// check bounds
-		if ( ry1 <=0 ) ry1 = 0;
-		if ( rx2 > currentMap.getWidth() ) rx2 = currentMap.getWidth() ;
+		if ( rx1 < 0 ) rx1 = 0;
+		if ( rx1 > currentMap.getWidth() ) rx1 = currentMap.getWidth();
+		if ( rx2 < 0 ) rx2 = 0;
+		if ( rx2 > currentMap.getWidth() ) rx2 = currentMap.getWidth();
+		
+		if ( ry1 < 0 ) ry1 = 0;
+		if ( ry1 > currentMap.getHeight() ) ry1 = currentMap.getHeight();
+		if ( ry2 < 0 ) ry2 = 0;
 		if ( ry2 > currentMap.getHeight() ) ry2 = currentMap.getHeight();
-		if ( rx2 <=0 ) rx2 = 0;
 		
 		Log.debug("after bounds " + rx1+","+ry1+" "+rx2+","+ry2);
 		
