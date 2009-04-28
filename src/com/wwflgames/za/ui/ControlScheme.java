@@ -38,7 +38,8 @@ public abstract class ControlScheme {
 		WEAPON_6,
 		WEAPON_7,
 		USE_BANDAGE,
-		IDLE
+		IDLE,
+		PAUSE_MENU
 	}
 	
 	public static final Control[] TARGETING_CONTROLS = {

@@ -49,6 +49,8 @@ public class NumKeyPadControlScheme extends ControlScheme {
 		controlKeyMap.put(Input.KEY_7,       Control.WEAPON_7);
 		
 		controlKeyMap.put(Input.KEY_B,       Control.USE_BANDAGE);
+		
+		controlKeyMap.put(Input.KEY_ESCAPE,  Control.PAUSE_MENU);
 	}
 	
 }
