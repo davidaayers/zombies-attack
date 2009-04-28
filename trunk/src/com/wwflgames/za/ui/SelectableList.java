@@ -78,6 +78,10 @@ public class SelectableList {
 		return confirmingChoice;
 	}
 	
+	public void clearConfirmating() {
+		confirmingChoice = false;
+	}
+	
 	public void render(Graphics g ) throws SlickException {
 		
 		if ( !visible ) {
@@ -108,8 +112,9 @@ public class SelectableList {
 			g.setColor(tmpTextColor);
 			g.drawString(sel.displayStr, x+5, ay );
 			g.setColor(tmpTextColor2);
-			g.drawString(sel.displayStr2, x+5, ay + 20 );
-			
+			if ( sel.displayStr2 != null ) {
+				g.drawString(sel.displayStr2, x+5, ay + 20 );
+			}
 			if ( sel.selected ) {
 				boxColor.a = alpha;
 				g.setColor(boxColor);

@@ -284,6 +284,10 @@ public class UI extends SlickEntity implements MapChangeListener {
 			}
 		}
 		
+		if ( control == Control.PAUSE_MENU ) {
+			showPauseMenu();
+			return;
+		}
 		
 		if ( control == Control.CHANGE_DIR ) {
 			changeDirection();
@@ -324,6 +328,10 @@ public class UI extends SlickEntity implements MapChangeListener {
 				bumpMoveOrAttack(delta.x,delta.y);
 			}
 		}
+	}
+
+	private void showPauseMenu() {
+		GameController.instance().fireGameCommand(GameCommand.SHOW_PAUSE_MENU);
 	}
 
 	private void maybeUseBandage() {

@@ -52,7 +52,7 @@ public abstract class AbstractPopup implements Popup {
 	public abstract void update(GameContainer container, StateBasedGame game, 
 			int delta) throws SlickException;
 	
-	public final void render(GameContainer container, StateBasedGame game, 
+	public void render(GameContainer container, StateBasedGame game, 
 			Graphics g)
 			throws SlickException {
 
@@ -72,8 +72,8 @@ public abstract class AbstractPopup implements Popup {
 
 	public void beforeRender(GameContainer container, 
 			StateBasedGame game, Graphics g) throws SlickException {}
-	public abstract void doRender(GameContainer container, 
-			StateBasedGame game, Graphics g) throws SlickException;
+	public void doRender(GameContainer container, 
+			StateBasedGame game, Graphics g) throws SlickException {}
 
 	public void aboutToShow() {
 	}
