@@ -61,29 +61,11 @@
 	
 <target name="build-game-webstart" depends="build-game">
 	<copy file="lib/${game.name}.jar" toDir="webstart"/>
+	<copy file="html/index.html" toDir="webstart"/>
+	<copy file="html/wza.gif" toDir="webstart"/>
+		
 	<createdemojnlp name="${game.name}" title="${game.title}" mainclass="${game.mainclass}"
 				    template="slickwithextension.jnlp" projectjar="${game.name}.jar"/>
-</target>
-
-<!--
- Upload the Game demo to the Slick website
--->
-<target name="upload-game-webstart" depends="build-game-webstart">
-	<input message="Upload password:" addproperty="password"/>
-	
-	<scp todir="${username}:${password}@${host}:${dir}" 
-		 file="webstart/${game.name}.jar"
-		 trust="true"
-		 port="122"
-		 verbose="true"/>
-	<scp todir="${username}:${password}@${host}:${dir}" 
-		 trust="true"
-		 port="122"
-		 verbose="true">
-		 <fileset dir="webstart">
-      		<include name="${game.name}.jnlp"/>
-    	</fileset>
-	</scp>
 </target>
 
 	<!--
@@ -112,7 +94,15 @@
 		<signjar jar="lib/${game.name}.jar" keystore="wwflgames.ks" storepass="wwlfgames" alias="wwflgames" verbose="true"/> 
 	</target>	
 	
-	
+	<target name="ftp-files">
+		<ftp server="ftp.wwflgames.com"
+		       remotedir="zombies-attack"
+		       userid="wwflgames"
+		       password="Vogons4u"
+		       depends="yes">
+		    <fileset dir="webstart"/>
+		</ftp>
+	</target>
 <!--
  A macro to copy and preprocess the JNLP template for all webstart demos
 -->
