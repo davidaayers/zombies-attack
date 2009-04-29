@@ -4,6 +4,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.util.Log;
 
 public class SelectableList {
 	
@@ -195,11 +196,20 @@ public class SelectableList {
 		if ( selIndex == list.length -1  ) {
 			return;
 		}
+		
 		list[selIndex].selected=false;
 		selIndex++;
 		list[selIndex].selected=true;
+		
+		// the max value for selOffset is ListSize - maxshown - 1
+		// so, a list of 8, the max should be 3
+		int max = list.length - maxAttrShown - 1;
+		
 		if ( selIndex > maxAttrShown ) {
 			selOffset++;
+			if ( selOffset > max ) {
+				selOffset = max;
+			}
 		}
 	}
 	

@@ -25,11 +25,6 @@ public abstract class ControlScheme {
 		TARGET_3,
 		TARGET_4,
 		TARGET_5,
-		TARGET_6,
-		TARGET_7,
-		TARGET_8,
-		TARGET_9,
-		TARGET_10,
 		WEAPON_1,
 		WEAPON_2,
 		WEAPON_3,
@@ -48,11 +43,6 @@ public abstract class ControlScheme {
 		Control.TARGET_3,
 		Control.TARGET_4,
 		Control.TARGET_5,
-		Control.TARGET_6,
-		Control.TARGET_7,
-		Control.TARGET_8,
-		Control.TARGET_9,
-		Control.TARGET_10	
 	};
 	
 	protected Map<Integer,Control> controlKeyMap = 

@@ -6,14 +6,23 @@ public class NumKeyPadControlScheme extends ControlScheme {
 
 	public NumKeyPadControlScheme() {
 		controlKeyMap.put(Input.KEY_NUMPAD8, Control.NORTH);
+		controlKeyMap.put(Input.KEY_I, 		 Control.NORTH);		
 		controlKeyMap.put(Input.KEY_NUMPAD9, Control.NORTHEAST);
+		controlKeyMap.put(Input.KEY_O,       Control.NORTHEAST);
 		controlKeyMap.put(Input.KEY_NUMPAD6, Control.EAST);
+		controlKeyMap.put(Input.KEY_L,       Control.EAST);
 		controlKeyMap.put(Input.KEY_NUMPAD3, Control.SOUTHEAST);
+		controlKeyMap.put(Input.KEY_PERIOD,  Control.SOUTHEAST);
 		controlKeyMap.put(Input.KEY_NUMPAD7, Control.NORTHWEST);
+		controlKeyMap.put(Input.KEY_U,       Control.NORTHWEST);
 		controlKeyMap.put(Input.KEY_NUMPAD4, Control.WEST);
+		controlKeyMap.put(Input.KEY_J,       Control.WEST);
 		controlKeyMap.put(Input.KEY_NUMPAD1, Control.SOUTHWEST);
+		controlKeyMap.put(Input.KEY_M,       Control.SOUTHWEST);
 		controlKeyMap.put(Input.KEY_NUMPAD2, Control.SOUTH);
+		controlKeyMap.put(Input.KEY_COMMA,   Control.SOUTH);
 		controlKeyMap.put(Input.KEY_NUMPAD5, Control.CHANGE_DIR);
+		controlKeyMap.put(Input.KEY_K,       Control.CHANGE_DIR);
 
 		// alternative move keys for laptap users
 		//TODO: figure out a better scheme for targeting, so that
@@ -29,7 +38,7 @@ public class NumKeyPadControlScheme extends ControlScheme {
 		controlKeyMap.put(Input.KEY_NUMPAD5, Control.CHANGE_DIR);
 
 		
-		controlKeyMap.put(Input.KEY_O,       Control.DOOR_STATE);
+		controlKeyMap.put(Input.KEY_D,       Control.DOOR_STATE);
 		controlKeyMap.put(Input.KEY_F,       Control.ACTIVATE_TARGET_MODE);
 		controlKeyMap.put(Input.KEY_SPACE,   Control.IDLE);
 		controlKeyMap.put(Input.KEY_Q,       Control.TARGET_1);
@@ -37,9 +46,6 @@ public class NumKeyPadControlScheme extends ControlScheme {
 		controlKeyMap.put(Input.KEY_E,       Control.TARGET_3);
 		controlKeyMap.put(Input.KEY_R,       Control.TARGET_4);
 		controlKeyMap.put(Input.KEY_T,       Control.TARGET_5);
-		controlKeyMap.put(Input.KEY_Y,       Control.TARGET_6);
-		controlKeyMap.put(Input.KEY_U,       Control.TARGET_7);
-		controlKeyMap.put(Input.KEY_I,       Control.TARGET_8);
 		controlKeyMap.put(Input.KEY_1,       Control.WEAPON_1);
 		controlKeyMap.put(Input.KEY_2,       Control.WEAPON_2);
 		controlKeyMap.put(Input.KEY_3,       Control.WEAPON_3);

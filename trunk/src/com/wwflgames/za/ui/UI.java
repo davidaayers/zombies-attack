@@ -459,6 +459,13 @@ public class UI extends SlickEntity implements MapChangeListener {
 						ControlScheme.TARGETING_CONTROLS[cnt]).intValue();
 				targetedZombies.add(t);
 				cnt++;
+				
+				// only target the first 5 zombies found
+				//TODO: this should probably be the 5 closest.
+				if ( cnt == 5 ) {
+					break;
+				}
+				
 			}
 		}
 		if ( cnt == 0 ) {
