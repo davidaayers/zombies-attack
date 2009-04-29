@@ -55,6 +55,7 @@ public class ZombiesAttack extends StateBasedGame {
 		try {
 			container = new AppGameContainer(new ZombiesAttack());
 			container.setDisplayMode(800,600,false);
+			container.setShowFPS(false);
 			container.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
