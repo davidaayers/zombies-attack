@@ -206,8 +206,8 @@ public class MapGenerator {
 		}
 		
 		// add some random zombies around the map
-		//TODO: make this more based on the level
-		int howManyZombies = 10;
+		int howManyArr[] = { 20 , 30 , 40 , 50 };
+		int howManyZombies = howManyArr[difficulty-1];
 		for ( int cnt = 0 ; cnt < howManyZombies ; cnt ++ ) {
 			int x = Dice.d(0,width-1);
 			int y = Dice.d(0,HEIGHT-1);

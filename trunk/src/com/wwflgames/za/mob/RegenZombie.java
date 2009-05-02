@@ -16,9 +16,9 @@ public class RegenZombie extends Zombie {
 	public RegenZombie(GameContainer container, StateBasedGame game,
 			ZombieController controller, FloorMap currentMap,
 			TurnRegulator turnRegulator, Hero hero, MobSpriteSheet spriteSheet,
-			int maxHealth , int regenChance ) {
+			int maxHealth , int attackPower, int regenChance ) {
 		super(container, game, controller, currentMap, turnRegulator, hero,
-				spriteSheet, maxHealth);
+				spriteSheet, maxHealth , attackPower );
 		this.regenChance = regenChance;
 	}
 

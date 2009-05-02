@@ -51,13 +51,14 @@ public abstract class Zombie extends Mobile {
 	public Zombie(GameContainer container, StateBasedGame game, 
 			ZombieController controller, FloorMap currentMap,
 			TurnRegulator turnRegulator, Hero hero, MobSpriteSheet spriteSheet,
-			int maxHealth) {
+			int maxHealth, int attackPower) {
 		this.controller = controller;
 		this.currentMap = currentMap;
 		this.turnRegulator = turnRegulator;
 		this.hero = hero;
 		this.facing = currentMap.getDirection();
 		this.mobSpriteSheet = spriteSheet;
+		this.attackPower = attackPower;
 		
 		this.maxHp = maxHealth;
 		this.currentHp = maxHealth;

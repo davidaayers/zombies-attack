@@ -126,7 +126,8 @@ public class GameController {
 	public void initNewGame(int difficulty) {
 	
 		MessageManager.instance().clearAll();
-		
+		addMapChangeListener(zombieFactory);
+
 		currentFloor = 1;
 		maxFloors = difficulty;
 
