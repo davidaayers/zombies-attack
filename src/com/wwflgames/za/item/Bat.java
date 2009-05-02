@@ -19,9 +19,8 @@ public class Bat extends Weapon {
 				Stat.BAT_HEAD_SMASH_CHANCE);
 		
 		if ( Dice.d(100) > 100 - headshotChance ) {
-			// HEADSHOT! BOOM!
 			zombie.doDamage(zombie.getCurrentHp());
-			MessageManager.instance().addCenteredMessage("HEADSHOT! BOOM!");
+			MessageManager.instance().addCenteredMessage("HEAD SMASH! KA-KOW!");
 		} else {
 			super.doDamage(hero, zombie);
 		}
