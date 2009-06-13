@@ -30,8 +30,8 @@ public class Hero extends Mobile implements MapChangeListener {
 	private Player player;
 	
 	public Hero() {
-		maxHp = 10;
-		currentHp = 10;
+		maxHp = 20;
+		currentHp = 20;
 	}
 
 	@Override

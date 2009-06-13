@@ -62,9 +62,10 @@
 <target name="copy-html">
 	<copy file="html/index.html" toDir="webstart"/>
 	<copy file="html/wza.gif" toDir="webstart"/>
+	<copy file="html/icon.gif" toDir="webstart"/>
 </target>
 	
-<target name="build-game-webstart">
+<target name="build-game-webstart" depends="build-game">
 	<copy file="lib/${game.name}.jar" toDir="webstart"/>
 	<createdemojnlp name="${game.name}" title="${game.title}" mainclass="${game.mainclass}"
 				    template="slickwithextension.jnlp" projectjar="${game.name}.jar"/>

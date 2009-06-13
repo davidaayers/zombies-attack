@@ -70,9 +70,9 @@ public class ZombieFactory implements MapChangeListener {
 		
 		Zombie z = null;
 		
-		int[] baseHpByDifficulty = { 1 , 1 , 2 , 3 };
+		int[] baseHpByDifficulty = { 1 , 2 , 3 , 4 };
 		int baseZombieHp = baseHpByDifficulty[difficulty-1];
-		int[] attackPowerByDifficulty = { 1 , 1 , 2 , 3 };
+		int[] attackPowerByDifficulty = { 1 , 2 , 2 , 3 };
 		int baseZombieAttackPower = attackPowerByDifficulty[difficulty-1];
 		
 		int type = zombieTypeBag.next();
@@ -97,7 +97,7 @@ public class ZombieFactory implements MapChangeListener {
 			break;
 		case 2:
 			// zombie that regens health
-			int[] regenChanceByDifficulty = { 10 , 20 , 30 , 40 };
+			int[] regenChanceByDifficulty = { 10 , 15 , 20 , 25 };
 			int regen = regenChanceByDifficulty[difficulty-1];
 			zhp = baseZombieHp + 3;
 			zatk = baseZombieAttackPower + 2;
@@ -107,14 +107,14 @@ public class ZombieFactory implements MapChangeListener {
 		case 3:
 			// easy to kill, hits like a truck
 			zhp = baseZombieHp;
-			int[] truckArr = { 3 , 5 , 7 , 9 };
+			int[] truckArr = { 3 , 4 , 5 , 6 };
 			zatk = truckArr[difficulty-1];
 			z = new BasicZombie(container, game, controller, map, regulator, 
 					hero, sheet , zhp , zatk);
 			break;
 		case 4:
 			// hard to kill, hits like a baby
-			zhp = baseZombieHp * 3;
+			zhp = baseZombieHp * 2;
 			zatk = 1;
 			z = new BasicZombie(container, game, controller, map, regulator, 
 					hero, sheet , zhp , zatk);
@@ -146,7 +146,6 @@ public class ZombieFactory implements MapChangeListener {
 			
 			break;
 		case 3:
-			zombieTypeBag.add(0,25);
 			zombieTypeBag.add(1,25);
 			zombieTypeBag.add(2,25);
 			zombieTypeBag.add(3,25);
@@ -154,7 +153,6 @@ public class ZombieFactory implements MapChangeListener {
 			
 			break;
 		case 4:
-			zombieTypeBag.add(0,25);
 			zombieTypeBag.add(1,25);
 			zombieTypeBag.add(2,50);
 			zombieTypeBag.add(3,50);

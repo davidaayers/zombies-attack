@@ -118,7 +118,11 @@ public class UI extends SlickEntity implements MapChangeListener {
 	@Override
 	public void update(int delta)
 		throws SlickException {
-		healthBar.setPctComplete((double)hero.getCurrentHp()/(double)hero.getMaxHp());
+		double pctComplete = (double)hero.getCurrentHp()/(double)hero.getMaxHp();
+		if ( pctComplete < 0 ) {
+			pctComplete = 0;
+		}
+		healthBar.setPctComplete(pctComplete);
 		MessageManager.instance().update(delta);
 	}
 	
@@ -130,7 +134,11 @@ public class UI extends SlickEntity implements MapChangeListener {
 		// draw the Player's health bar
 		healthBar.render(g);
 		g.setColor(Color.black);
-		String healthStr = "Health: " + hero.getCurrentHp()+"/"+hero.getMaxHp();
+		int currHp = hero.getCurrentHp();
+		if ( currHp < 0 ) {
+			currHp = 0;
+		}
+		String healthStr = "Health: " + currHp +"/"+hero.getMaxHp();
 		g.drawString(healthStr, 360, 3);
 		
 		// draw bandage count
@@ -345,9 +353,9 @@ public class UI extends SlickEntity implements MapChangeListener {
 		} else {
 			bandage.setQuantity(bandage.getQuantity()-1);
 			// heal some health
-			// bandages normally heal 2, but the player might
+			// bandages normally heal 4, but the player might
 			// have attributes that improve that
-			int healed = 2 + player.getStatValue(Stat.BANDAGING_SKILL);
+			int healed = 4 + player.getStatValue(Stat.BANDAGING_SKILL);
 			int maxHp = hero.getMaxHp();
 			int newHp = hero.getCurrentHp() + healed;
 			hero.setCurrentHp(newHp<maxHp?newHp:maxHp);
@@ -592,6 +600,10 @@ public class UI extends SlickEntity implements MapChangeListener {
 		this.player = player;
 		// reset the health bar
 		healthBar.setPctComplete(1);
+	}
+	
+	public ControlScheme getControlScheme() {
+		return controlScheme;
 	}
 	
 }

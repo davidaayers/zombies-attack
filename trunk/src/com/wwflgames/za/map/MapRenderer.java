@@ -133,6 +133,9 @@ public class MapRenderer extends SlickEntity implements MapChangeListener {
 					}
 				}
 				
+				// let's see if this works
+				wallColor = TRANS_WALL_COLOR;
+				
 				// x1 and x1 will be used as the base for all drawing, they
 				// are the top left corner of the floor tile
 				float x1 = x * TILE_WIDTH + START_DRAW_X + xoffset(y);
@@ -175,6 +178,7 @@ public class MapRenderer extends SlickEntity implements MapChangeListener {
 					// 1) We're not rendering a room right now
 					// 2) We're rendering a room and roomStuffVisible is true
 					// 3) we're rendering the player
+					
 					if ( m == hero ||
 							currentRoom == null ||
 							roomStuffVisible ) {
