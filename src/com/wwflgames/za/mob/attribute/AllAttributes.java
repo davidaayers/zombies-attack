@@ -46,31 +46,41 @@ public class AllAttributes {
 	public static final Attribute DUNDEE2 = 
 		new Attribute(
 				"Crocodile Dundee 2" , 
-				"Increase Knife Damage by 2",
-				"+2 Knife Dmg",
+				"Increase Knife Damage by 1",
+				"+1 Knife Dmg",
 				DUNDEE, 
 				Stat.KNIFE_SKILL, 
-				2
+				1
 		);
 
-	public static final Attribute DUNDEE3 = 
-		new Attribute(
-				"Crocodile Dundee 3" , 
-				"Increase Knife Damage by 2",
-				"+2 Knife Dmg",
-				DUNDEE2, 
-				Stat.KNIFE_SKILL, 
-				2
-		);
+//	public static final Attribute DUNDEE3 = 
+//		new Attribute(
+//				"Crocodile Dundee 3" , 
+//				"Increase Knife Damage by 2",
+//				"+2 Knife Dmg",
+//				DUNDEE2, 
+//				Stat.KNIFE_SKILL, 
+//				2
+//		);
 
 	public static final Attribute MEDIC = 
 		new Attribute(
 				"Medic!" , 
-				"Increase Bandage Healing by 2",
-				"+2 Bandage Heal",
+				"Increase Bandage Healing by 4",
+				"+4 Bandage Heal",
 				null, 
 				Stat.BANDAGING_SKILL, 
-				2
+				4
+		);
+
+	public static final Attribute MEDIC2 = 
+		new Attribute(
+				"Medic 2!" , 
+				"Increase Bandage Healing by 4",
+				"+4 Bandage Heal",
+				MEDIC, 
+				Stat.BANDAGING_SKILL, 
+				4
 		);
 
 	public static final Attribute SNIPER = 
@@ -170,8 +180,8 @@ public class AllAttributes {
 		SLUGGER3,
 		DUNDEE,
 		DUNDEE2,
-		DUNDEE3,
 		MEDIC,
+		MEDIC2,
 		SNIPER,
 		MARKSMAN,
 		FLEET_FOOTED,

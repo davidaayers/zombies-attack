@@ -26,8 +26,10 @@ public class RegenZombie extends Zombie {
 	public void takeTurn(int turn) {
 		super.takeTurn(turn);
 
+		int roll = Dice.d(100);
+		
 		// maybe regen some health
-		if ( Dice.d(100) > regenChance && currentHp < maxHp) {
+		if ( roll < regenChance && currentHp < maxHp) {
 			currentHp++;
 			MessageManager.instance().addFloatingMessage("+1 HP", 
 					this.getRenderX(), this.getRenderY(), Color.white);

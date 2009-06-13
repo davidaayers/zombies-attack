@@ -43,6 +43,10 @@ public class HealthBar {
 		g.fillRect(drawx, drawy, drawWidth, drawHeight);
 		g.setColor(outlineColor);
 		g.drawRect(drawx, drawy, drawWidth, drawHeight);
+		double drawPct = pct;
+		if ( drawPct < 0 ) {
+			drawPct = 0;
+		}
 		int width = (int) ((double) (drawWidth - 1) * pct);
 		g.setColor(barColor);
 		g.fillRect(drawx + 1, drawy + 1, width, drawHeight - 1);

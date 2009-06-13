@@ -4,6 +4,8 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.util.ClasspathLocation;
+import org.newdawn.slick.util.ResourceLoader;
 
 import com.wwflgames.za.game.GameController;
 import com.wwflgames.za.gamestate.GamePlayState;
@@ -52,6 +54,10 @@ public class ZombiesAttack extends StateBasedGame {
 	}
 	
 	public static void main(String[] argv) {
+		
+		ResourceLoader.removeAllResourceLocations();
+		ResourceLoader.addResourceLocation(new ClasspathLocation());
+		
 		try {
 			container = new AppGameContainer(new ZombiesAttack());
 			container.setDisplayMode(800,600,false);

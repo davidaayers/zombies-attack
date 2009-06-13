@@ -1,7 +1,7 @@
 package com.wwflgames.za.mob.attribute;
 
 public enum Stat {
-	MAX_HEALTH(10),
+	MAX_HEALTH(20),
 	BANDAGING_SKILL(1),
 	KNIFE_SKILL(0),
 	BAT_SKILL(0),

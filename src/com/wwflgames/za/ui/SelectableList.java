@@ -6,6 +6,9 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.util.Log;
 
+import com.wwflgames.za.ui.ControlScheme.Control;
+import com.wwflgames.za.game.GameController;
+
 public class SelectableList {
 	
 	private static final int ENTRY_HEIGHT = 40;
@@ -152,10 +155,14 @@ public class SelectableList {
 		}
 		
 		if ( !confirmingChoice ) {
-			if ( key == Input.KEY_DOWN ) {
+			
+			ControlScheme cs = GameController.instance().getUi().getControlScheme();
+			Control control = cs.getControl(key);
+			
+			if ( key == Input.KEY_DOWN || control == Control.SOUTH ) {
 				selMoveDown();
 			}
-			if ( key == Input.KEY_UP ) {
+			if ( key == Input.KEY_UP || control == Control.NORTH ) {
 				selMoveUp();
 			}
 			if ( key == Input.KEY_ENTER ) {
